@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4135705889705252}
-  - component: {fileID: 114086481582385190}
+  - component: {fileID: 114282084257810884}
   m_Layer: 0
   m_Name: WayPoint
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,13 +34,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169351533050092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.025551103, y: 10.466959, z: 15.886638}
+  m_LocalPosition: {x: -20.2, y: -8.42, z: 4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114086481582385190
+--- !u!114 &114282084257810884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169351533050092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff50ef9d0519d2c4fbf4df7eeb2dbc19, type: 3}
+  m_Script: {fileID: 11500000, guid: d06243de45475064c8a660839c05bfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 1
+  _connectivityRadius: 20
