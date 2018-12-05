@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCSimplePatrol : MonoBehaviour {
+public class NPCPatrol : MonoBehaviour {
 
     [SerializeField]
     bool _patrolWaiting;
@@ -31,9 +31,8 @@ public class NPCSimplePatrol : MonoBehaviour {
 
         if (_navMeshAgent == null)
         {
-            Debug.LogError("Not attached.")
-        }
-        else
+            Debug.LogError("Not attached.");
+        } else
         {
             if (_patrolPoints != null && _patrolPoints.Count >= 2)
             {
@@ -51,7 +50,7 @@ public class NPCSimplePatrol : MonoBehaviour {
     {
         if (_travelling && _navMeshAgent.remainingDistance <= 1.0f)
         {
-            _travelling + false;
+            _travelling = false;
 
             if (_patrolWaiting)
             {
@@ -77,5 +76,33 @@ public class NPCSimplePatrol : MonoBehaviour {
             }
         }
     }
-}
 
+    private void SetDestination()
+    {
+        if (_patrolPoints != null)
+        {
+            Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
+            _navMeshAgent.SetDestination(targetVector);
+            _travelling = true;
+        }
+    }
+
+    private void ChangePatrolPoint()
+    {
+        if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
+        {
+            _patrolForward = !_patrolForward;
+        }
+
+        if (_patrolForward)
+        {
+            _currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
+        } else
+        {
+            if (--_currentPatrolIndex < 0)
+            {
+                _currentPatrolIndex = _patrolPoints.Count - 1;
+            }
+        }
+    }
+}
